@@ -1,10 +1,10 @@
 import * as types from "./actionType"
 import axios from "axios"
 
-const login=()=>dispatch=>{
+const login=(payload)=>dispatch=>{
     dispatch({type:types.USER_LOGIN_REQUEST})
 
-    return axios.post("http://localhost:8080/books")
+    return axios.post("http://localhost:8080/books",payload)
     .then((r)=>{
         dispatch({type: types.USER_LOGIN_SUCCESS,payload:r.data.token})
     })
