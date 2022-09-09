@@ -1,9 +1,9 @@
 
 import * as types from "./actionType"
 import axios from "axios"
-const getBook= () => (dispatch)=>{
+const getBook= (params) => (dispatch)=>{
     dispatch({type: types.GET_BOOK_REQUEST});
-    return axios.get("http://localhost:8080/books")
+    return axios.get("http://localhost:8080/books",params)
     .then((r)=>{
         dispatch({type:types.GET_BOOK_SUCCESS, payload:r.data})
     })
