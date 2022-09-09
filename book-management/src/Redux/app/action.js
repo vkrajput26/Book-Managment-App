@@ -10,5 +10,17 @@ const getBook= (params) => (dispatch)=>{
     .catch((e)=>{
         dispatch({type:types.GET_BOOK_FAILURE, payload:e})
     })
+};
+
+//UPDATE
+const updateBook = (id,payload) => dispatch =>{
+    dispatch({type: types.PATCH_BOOK_REQUEST});
+    return axios.patch(`http://localhost:8080/books/${id}`,payload)
+    .then(r=> {
+        dispatch({type:types.PATCH_BOOK_SUCCESS, payload:r.data})
+    })
+    .catch((e)=>{
+        dispatch({type: types.PATCH_BOOK_FAILURE,payload:e});
+    })
 }
-export {getBook}
+export {getBook,updateBook}
