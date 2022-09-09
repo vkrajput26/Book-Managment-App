@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const BookCard=({bookData}) =>{
     return (
         <div>
@@ -9,7 +9,18 @@ const BookCard=({bookData}) =>{
             width="100px" alt="" />
             <div>{bookData.book_name}</div>
             <div>{bookData.category}</div>
-            <div>{bookData.release_year}</div>
+            <div>
+                <div>
+                {bookData.release_year}
+                </div>
+            <Link to={`/books/${bookData.id}/edit`}>
+            <button>Edit</button>
+            </Link>    
+
+            <Link to={`/books/${bookData.id}`}>
+            <button>SinglePage</button>
+            </Link> 
+            </div>
         </div>
     );
 }
